@@ -19,6 +19,10 @@ public class MaquinasController {
         super();
     }
 
+      // Método para definir a JTable
+      public void setTable(JTable table) {
+        this.table = table;
+    }
     public MaquinasController(List<Maquina> maquinas, DefaultTableModel tableModel, JTable table) {
         this.maquinas = maquinas;
         this.tableModel = tableModel;
@@ -66,7 +70,7 @@ public class MaquinasController {
 
     public void deletar(String codigo) {
         Object[] opcoes = { "Sim", "Não" };
-        int linhaSelecionada = table.getSelectedRow();
+        int linhaSelecionada = (table != null) ? table.getSelectedRow() : -1;
 
         try {
             if (linhaSelecionada >= 0) {
@@ -77,8 +81,9 @@ public class MaquinasController {
 
                 if (resposta == JOptionPane.YES_OPTION) {
                     new MaquinaDAO().deletar(codigo);
-                    atualizarTabela(); // Atualiza a tabela de exibição após a exclusão
-                    JOptionPane.showMessageDialog(null, "Máquina deletada com sucesso!");
+                    // Atualiza a tabela de exibição após a exclusão
+                    JOptionPane.showMessageDialog(null, "Máquina deletada com sucesso!"); 
+                    atualizarTabela(); 
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Selecione uma máquina para excluir");
@@ -97,5 +102,19 @@ public class MaquinasController {
         }
 
         return dadosValidos;
+    } 
+
+    public void marcarManutencao(String codigo, boolean emManutencao) {
+        Maquina maquina = new MaquinaDAO().buscarPorCodigo(codigo);
+        if (maquina != null) {
+            maquina.setEmManutencao(emManutencao); // Atualiza o estado
+            new MaquinaDAO().atualizar(maquina);
+            atualizarTabela();
+        }
+    }
+    
+    // Método para listar máquinas em manutenção
+    public List<Maquina> listarEmManutencao() {
+        return new MaquinaDAO().listarEmManutencao(); // Retorna a lista de máquinas em manutenção
     }
 }

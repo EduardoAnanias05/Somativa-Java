@@ -128,5 +128,13 @@ public class MaquinaDAO extends CrudDAO<Maquina> {
              }
     }
 
+    public List<Maquina> listarEmManutencao() {
+        // Retorna todas as máquinas onde o estado de manutenção é verdadeiro
+        String sql = "SELECT * FROM maquinas WHERE emManutencao = true";
+        // Implementação de busca no banco de dados
+    }
     
+    public void atualizar(Maquina maquina) {
+        // Implementa a lógica de atualização da máquina no banco de dados
+    }
 }

@@ -33,7 +33,9 @@ public class JanelaSupervisor extends JFrame {
 
         // Opções do menu da barra
         JMenuItem menuCadastroMaquinas = new JMenuItem("Cadastro de Máquinas"); 
-        JMenuItem menuListMaquinas = new JMenuItem("Lista de Maquinas");
+        JMenuItem menuListMaquinas = new JMenuItem("Lista de Maquinas"); 
+        JMenuItem menuListOS = new JMenuItem("Fazer OS");
+
 
         JMenuItem menuSair = new JMenuItem("Sair");
 
