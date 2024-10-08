@@ -40,7 +40,7 @@ public class JanelaTecnico extends JFrame {
 
         // Painel de botões
         JPanel panelBotoes = new JPanel();
-        btnDesmarcarManutencao = new JButton("Desmarcar Manutenção");
+        btnDesmarcarManutencao = new JButton("Concluir Manutenção");
         panelBotoes.add(btnDesmarcarManutencao);
         panelListaManutencao.add(panelBotoes, BorderLayout.SOUTH);
 
@@ -82,9 +82,9 @@ public class JanelaTecnico extends JFrame {
             String codigo = tableModel.getValueAt(selectedRow, 0).toString();
             maquinasController.marcarManutencao(codigo, false); // Desmarca a manutenção
             atualizarTabelaManutencao(); // Atualiza a tabela após a ação
-            JOptionPane.showMessageDialog(this, "Manutenção desmarcada com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Manutenção Concluida com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "Selecione uma máquina para desmarcar a manutenção.", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Selecione uma máquina para Concluir a manutenção.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 

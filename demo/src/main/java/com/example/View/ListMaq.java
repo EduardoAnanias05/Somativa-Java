@@ -5,8 +5,11 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
 
+import com.example.Connection.MaquinaDAO;
 import com.example.Controller.MaquinasController;
 import com.example.Model.Maquina;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
 
 public class ListMaq extends JPanel {
 
@@ -28,7 +31,9 @@ public class ListMaq extends JPanel {
         tabelaMaquinas = new JTable(tableModel);
 
         // Passa a tabela para o controlador
-        maquinasController.setTable(tabelaMaquinas);
+        maquinasController.setTable(tabelaMaquinas); 
+
+
 
         // Adiciona a tabela dentro de um JScrollPane
         add(new JScrollPane(tabelaMaquinas), BorderLayout.CENTER);
@@ -74,6 +79,7 @@ public class ListMaq extends JPanel {
                     maquina.getDescricao(),
                     maquina.getDataAquisicao(),
                     maquina.isEmManutencao()
+                    
             });
         }
     }
@@ -114,7 +120,6 @@ public class ListMaq extends JPanel {
     }
 
     
-
 private void colocarEmManutencao() {
     int selectedRow = tabelaMaquinas.getSelectedRow();
     if (selectedRow != -1) {
@@ -126,4 +131,17 @@ private void colocarEmManutencao() {
         JOptionPane.showMessageDialog(this, "Selecione uma máquina para marcar como em manutenção.", "Erro", JOptionPane.ERROR_MESSAGE);
     }
 }
+public void marcarManutencao(String codigo, boolean emManutencao) {
+    MaquinaDAO maquinaDAO = new MaquinaDAO();
+    Maquina maquina = maquinaDAO.procurarPorId(codigo); // Altere o método para buscar pela ID
+    if (maquina != null) {
+        maquina.setEmManutencao(emManutencao); // Atualiza o estado
+        maquinaDAO.atualizar(maquina); // Atualiza no banco de dados
+    }
+} 
+
+ 
 }
+
+
+

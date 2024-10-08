@@ -40,6 +40,11 @@ public class Maquina {
         return emManutencao;
     }
 
+    // Setter para 'emManutencao'
+    public void setEmManutencao(boolean emManutencao) {
+        this.emManutencao = emManutencao;
+    }
+
     public String getDataAquisicao(){
         return dataAquisicao;
     }

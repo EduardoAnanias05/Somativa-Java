@@ -45,7 +45,7 @@ public class LoginDAO {
         try{
             if(!tabelaExiste()){
                 criaTabela();
-                preencherTabela("adm", "adm", "tecnico", "tecnico");
+                preencherTabela("Supervisor", "adm", "tecnico", "tec");
             }
             preencherTabela("adm", "adm", "tecnico", "tecnico");
         }catch(Exception e ){

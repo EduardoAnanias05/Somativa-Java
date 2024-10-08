@@ -44,7 +44,7 @@ public class LoginController {
         }
     }
 
-    public void inicializacao(){
+    public void iniciar(){
         LoginDAO init = new LoginDAO();
         init.criaTabela();
         init.inicializarBanco();

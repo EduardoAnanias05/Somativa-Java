@@ -50,7 +50,10 @@ public class MaquinasController {
     public List<Maquina> listarTodos() {
         maquinas = new MaquinaDAO().listarTodos();
         return maquinas;
-    }
+    } 
+
+    
+    
 
     public void cadastrar(String codigo, String nome, String marca, String descricao, String dataAquisicao,
             boolean emManutencao) {
@@ -105,14 +108,19 @@ public class MaquinasController {
     } 
 
     public void marcarManutencao(String codigo, boolean emManutencao) {
-        Maquina maquina = new MaquinaDAO().buscarPorCodigo(codigo);
+        MaquinaDAO maquinaDAO = new MaquinaDAO(); // Cria apenas uma instância de MaquinaDAO
+        Maquina maquina = maquinaDAO.buscarPorCodigo(codigo); // Busca a máquina pelo código
+        
         if (maquina != null) {
-            maquina.setEmManutencao(emManutencao); // Atualiza o estado
-            new MaquinaDAO().atualizar(maquina);
-            atualizarTabela();
+            maquina.setEmManutencao(emManutencao); // Atualiza o estado da máquina
+            maquinaDAO.atualizar(maquina); // Atualiza a máquina no banco de dados
+            
+            // Se a atualização foi bem-sucedida, atualiza a tabela
+            atualizarTabela(); 
+        } else {
+            System.out.println("Máquina não encontrada: " + codigo);
         }
     }
-    
     // Método para listar máquinas em manutenção
     public List<Maquina> listarEmManutencao() {
         return new MaquinaDAO().listarEmManutencao(); // Retorna a lista de máquinas em manutenção

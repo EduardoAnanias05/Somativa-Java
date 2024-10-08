@@ -16,7 +16,10 @@ public class Homes extends javax.swing.JFrame {
         inputSenha = new javax.swing.JPasswordField();
         inputCpf = new javax.swing.JFormattedTextField();
         btnEntrar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel(); 
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
 
         setVisible(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -25,8 +28,10 @@ public class Homes extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(830, 600));
         getContentPane().setLayout(null);
         getContentPane().add(inputSenha);
+        jLabel2.setText("Nome:");
         inputSenha.setBounds(480, 310, 170, 30);
         getContentPane().add(inputCpf);
+        jLabel3.setText("Senha:");
         inputCpf.setBounds(480, 240, 170, 30);
 
         btnEntrar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
@@ -34,11 +39,21 @@ public class Homes extends javax.swing.JFrame {
         btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(btnEntrar);
         btnEntrar.setBounds(520, 360, 130, 27);
+    
+
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("teste");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 830, 550);
+        jLabel1.setText("Bem vindo ao sistema de gerenciamento de maquinas");
+        getContentPane().add(jLabel1); 
+        getContentPane().add(jLabel2); 
+        getContentPane().add(jLabel3); 
+
+
+
+
+        jLabel1.setBounds(0, 0, 830, 550); 
+        jLabel2.setBounds(480, 210, 170, 30);
+        jLabel3.setBounds(480, 270, 170, 30);
 
         pack();
 
@@ -92,4 +107,6 @@ public class Homes extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField inputCpf;
     private javax.swing.JPasswordField inputSenha;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
 }
